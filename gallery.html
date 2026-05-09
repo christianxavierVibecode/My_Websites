@@ -1,305 +1,344 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Organie - Gallery Wisata</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Georgia, serif; color: #333; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Gallery | BajoIslandTour - Beyond the Horizon, Lies Everything
+    </title>
+    <link rel="icon" type="image/webp" href="./img/Logo_Website_UTS.avif" />
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      /* INTRO */
+      .intro {
+        text-align: center;
+        padding: 50px 40px 30px;
+      }
+      .intro h2 {
+        font-size: 42px;
+        color: #55462a;
+      }
+      .intro h2 em {
+        font-family: Georgia, serif;
+        font-style: italic;
+        color: #333;
+      }
+      .intro p {
+        max-width: 520px;
+        margin: 14px auto 20px;
+        color: #777;
+        font-size: 14px;
+        line-height: 1.7;
+        font-family: Arial, sans-serif;
+      }
 
-    /* NAV */
-    nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 40px; background: #fff; border-bottom: 1px solid #eee;
-      position: sticky; top: 0; z-index: 100;
-    }
-    nav .logo { font-size: 22px; font-weight: bold; letter-spacing: 2px; color: #5a8a3c; }
-    nav ul { list-style: none; display: flex; gap: 24px; }
-    nav ul li a { text-decoration: none; color: #444; font-family: Arial, sans-serif; font-size: 13px; }
-    nav ul li a:hover { color: #5a8a3c; }
-    nav ul li a.active { color: #5a8a3c; font-weight: bold; border-bottom: 2px solid #5a8a3c; padding-bottom: 2px; }
+      /* GALLERY GRID */
+      .gallery {
+        padding: 0 40px 60px;
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .gallery-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      .gallery-card:hover {
+        transform: translateY(-4px);
+      }
+      .gallery-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: brightness(80%);
+        transition: filter 0.5s ease;
+      }
+      .gallery-card .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
+        padding: 15px 16px 16px;
+        color: #fff;
+      }
+      .gallery-card .overlay h4 {
+        font-size: 15px;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+      }
+      .gallery-card .overlay p {
+        font-size: 12px;
+        opacity: 0.85;
+        margin-top: 3px;
+        font-family: Arial, sans-serif;
+      }
+      .gallery-card .overlay .Cardtitle {
+        display: inline-block;
+        background: #55462a;
+        font-size: 10px;
+        padding: 2px 8px;
+        border-radius: 2px;
+        letter-spacing: 1px;
+      }
+      .gallery-card .overlay .CardDescription {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transform: translateY(10px);
+        transition: max-height 0.5s ease, opacity 0.4s ease, transform 0.4s ease;
+        margin-top: 0;
+        font-size: 12px;
+        line-height: 1.4;
+        color: #ddd;
+      }
+      .gallery-card.active {
+        transform: scale(1.02);
+      }
+      .gallery-card.active .CardDescription {
+        max-height: 300px;
+        opacity: 1;
+        transform: translateY(0);
+        margin-top: 4px;
+        margin-left: 6px;
+      }
+      .gallery-card .overlay .CardTemp {
+        display: block;
+        font-size: 11px;
+        font-weight: bold;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+        margin-top: 6px;
+        margin-left: 6px;
+        color: #ddd;
+      }
+      @media (max-width: 768px) {
+        nav {
+          padding: 14px 20px;
+        }
 
-    /* PAGE HERO */
-    .page-hero {
-      background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200') center/cover no-repeat;
-      height: 300px; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center; color: #fff;
-      position: relative;
-    }
-    .page-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: rgba(0,0,0,0.38);
-    }
-    .page-hero p { font-size: 13px; letter-spacing: 2px; opacity: 0.9; position: relative; margin-bottom: 8px; font-family: Arial, sans-serif; }
-    .page-hero h1 { font-size: 40px; font-weight: bold; letter-spacing: 3px; position: relative; }
-    .page-hero em { font-style: italic; font-size: 18px; position: relative; }
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
 
-    /* INTRO */
-    .intro { text-align: center; padding: 50px 40px 30px; }
-    .intro h2 { font-size: 42px; color: #5a8a3c; }
-    .intro h2 em { font-family: Georgia, serif; font-style: italic; color: #333; }
-    .intro p { max-width: 520px; margin: 14px auto 20px; color: #777; font-size: 14px; line-height: 1.7; font-family: Arial, sans-serif; }
+        .gallery-card .overlay .CardDescription {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="logo"><img src="./img/Logo_Website_UTS.avif" /></div>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a class="active" href="./gallery.html">Gallery</a></li>
+        <li><a href="./form.html">Contact</a></li>
+        <li><a href="./about.html">About</a></li>
+      </ul>
+    </nav>
 
-    /* FILTER TAB */
-    .filter { text-align: center; padding: 10px 40px 30px; }
-    .filter button {
-      background: none; border: 1px solid #ccc; padding: 7px 20px; margin: 0 5px;
-      font-size: 12px; font-family: Arial, sans-serif; cursor: pointer; letter-spacing: 1px; color: #666;
-    }
-    .filter button.on { background: #5a8a3c; color: #fff; border-color: #5a8a3c; }
+    <!-- INTRO -->
+    <section class="intro">
+      <h2>Gallery <em>& Memories</em></h2>
+      <p>
+        Nikmati koleksi visual menakjubkan dari Labuan Bajo — mulai dari
+        pulau-pulau eksotis, pantai berpasir merah muda, laut biru kristal,
+        hingga matahari terbenam yang memukau. Setiap gambar menyimpan kisah
+        petualangan yang tak terlupakan.
+      </p>
+    </section>
 
-    /* GALLERY GRID */
-    .gallery { padding: 0 40px 60px; }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px; max-width: 1000px; margin: 0 auto;
-    }
-    .gallery-card { position: relative; overflow: hidden; border-radius: 4px; cursor: pointer; }
-    .gallery-card img { width: 100%; height: 220px; object-fit: cover; display: block; }
-    .gallery-card .overlay {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.65));
-      padding: 30px 16px 16px; color: #fff;
-    }
-    .gallery-card .overlay h4 { font-size: 15px; font-family: Arial, sans-serif; font-weight: bold; }
-    .gallery-card .overlay p { font-size: 12px; opacity: 0.85; margin-top: 3px; font-family: Arial, sans-serif; }
-    .gallery-card .overlay .tag {
-      display: inline-block; background: #5a8a3c; font-size: 10px;
-      padding: 2px 8px; border-radius: 2px; margin-bottom: 6px; letter-spacing: 1px;
-    }
-    /* card besar (span 2 kolom) */
-    .gallery-card.wide { grid-column: span 2; }
-    .gallery-card.wide img { height: 220px; }
+    <!-- GALLERY -->
+    <section class="gallery">
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="./img/Gallery/BUKIT_CINTA_LOVE_HILL.webp" />
+          <div class="overlay">
+            <span class="Cardtitle">BUKIT CINTA (LOVE HILL)</span>
+            <p class="CardTemp">Klik Untuk Lihat Info</p>
+            <p class="CardDescription">
+              Situs Warisan Dunia UNESCO sekaligus rumah bagi komodo — kadal
+              terbesar yang masih hidup di muka bumi. Membentang di Pulau
+              Komodo, Pulau Rinca, dan Pulau Padar, taman nasional ini
+              menawarkan lebih dari sekadar perjumpaan dengan sang naga.
+              Bayangkan: matahari terbenam di atas Pulau Padar, pantai berpasir
+              merah muda, dan keanekaragaman hayati laut yang termasuk terkaya
+              di dunia. Hanya bisa dicapai dengan kapal — dan sepadan dengan
+              setiap ombaknya.
+            </p>
+          </div>
+        </div>
 
-    /* STATS */
-    .stats { background: #f9f9f7; padding: 50px 40px; display: flex; justify-content: center; gap: 60px; text-align: center; }
-    .stat-item h3 { font-size: 36px; color: #5a8a3c; font-family: Georgia, serif; }
-    .stat-item p { font-size: 13px; color: #888; font-family: Arial, sans-serif; margin-top: 4px; }
+        <div class="gallery-card">
+          <img src="./img/Gallery/BUKIT_SYLVIA_SYLVIA_HILL.webp" />
+          <div class="overlay">
+            <span class="Cardtitle">BUKIT SYLVIA (SYLVIA HILL)</span>
+            <p class="CardTemp">Klik Untuk Lihat Info</p>
+            <p class="CardDescription">
+              Tersembunyi di balik jalur hutan di pesisir Flores, Goa Rangko
+              menyimpan laguna air asin alami di dalam ceruk-ceruk batunya.
+              Cahaya matahari menerobos celah gua, memantulkan kilau keemasan di
+              atas air yang begitu jernih hingga tampak tak nyata. Bawa
+              perlengkapan snorkel — dunia bawah lautnya tak kalah memukau.
+              Dapat dicapai dengan perahu sekitar 30 menit dari Labuan Bajo.
+            </p>
+          </div>
+        </div>
 
-    /* NEWSLETTER */
-    .newsletter { background: #f9f9f7; padding: 50px 40px; display: flex; align-items: center; justify-content: center; gap: 40px; border-top: 1px solid #eee; }
-    .newsletter h3 { font-size: 22px; font-family: Georgia, serif; max-width: 200px; }
-    .newsletter .form-row { display: flex; }
-    .newsletter input {
-      padding: 12px 18px; border: 1px solid #ddd; font-size: 13px;
-      outline: none; width: 260px; border-right: none; font-family: Arial, sans-serif;
-    }
-    .newsletter button {
-      padding: 12px 22px; background: #5a8a3c; color: #fff; border: none;
-      font-size: 13px; cursor: pointer; letter-spacing: 1px; font-family: Arial, sans-serif;
-    }
+        <div class="gallery-card">
+          <img src="./img/Gallery/CUNCA_RAMI_WATERFALL.webp" />
+          <div class="overlay">
+            <span class="Cardtitle">CUNCA RAMI WATERFALL</span>
+            <p class="CardTemp">Klik Untuk Lihat Info</p>
+            <p class="CardDescription">
+              Hanya 5 km dari pelabuhan, Goa Batu Cermin adalah gua penuh
+              keajaiban purba. Dulunya terendam di bawah laut,
+              dinding-dindingnya kini tertanam fosil karang, jejak penyu, dan
+              bentuk-bentuk ikan — museum alam ciptaan waktu. Saat sinar
+              matahari menembus lubang gua, dinding kristalnya berkilauan bagai
+              seribu cermin. Kunjungi antara pukul 08.00–10.00 pagi untuk
+              menyaksikan cahaya di saat paling dramatis.
+            </p>
+          </div>
+        </div>
 
-    /* FOOTER */
-    footer { background: #fff; padding: 50px 40px 20px; border-top: 1px solid #eee; }
-    .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 30px; }
-    footer h4 { font-size: 13px; font-weight: bold; margin-bottom: 14px; letter-spacing: 1px; font-family: Arial, sans-serif; }
-    footer ul { list-style: none; }
-    footer ul li { margin-bottom: 7px; }
-    footer ul li a { text-decoration: none; font-size: 12px; color: #888; font-family: Arial, sans-serif; }
-    footer .contact-info p { font-size: 12px; color: #888; margin-bottom: 6px; font-family: Arial, sans-serif; }
-    footer .instagram-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-    footer .instagram-grid img { width: 100%; height: 55px; object-fit: cover; border-radius: 2px; }
-    .footer-bottom { text-align: center; font-size: 11px; color: #bbb; padding-top: 16px; border-top: 1px solid #eee; font-family: Arial, sans-serif; }
-  </style>
-</head>
-<body>
+        <div class="gallery-card">
+          <img src="./img/Gallery/CUNCA_WULANG_WATERFALL.webp" />
+          <div class="overlay">
+            <span class="Cardtitle">CUNCA WULANG WATERFALL</span>
+            <p class="CardTemp">Klik Untuk Lihat Info</p>
+            <p class="CardDescription">
+              Pelarian sempurna ke pedalaman Flores yang rimbun. Air Terjun
+              Cunca Rami berdiri anggun di tengah hutan belantara dekat Desa
+              Golo Ndaring, murni dan tak terjamah. Kolam alami di bawahnya
+              mengundang siapa saja untuk berenang di air mata air yang segar,
+              dikelilingi pepohonan tinggi dan keheningan yang menyembuhkan.
+              Jalur trekking singkat mengantarkan Anda ke sana — menyegarkan
+              jiwa, jauh dari keramaian.
+            </p>
+          </div>
+        </div>
 
-  <!-- NAV -->
-  <nav>
-    <div class="logo">ORGANIE</div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="gallery.html" class="active">Gallery</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="form.html">Contact</a></li>
-    </ul>
-  </nav>
+        <div class="gallery-card">
+          <img src="./img/Gallery/GOA_BATU_CERMIN_MIRROR_STONE_CAVE.webp" />
+          <div class="overlay">
+            <span class="Cardtitle">GOA BATU CERMIN (MIRROR STONE CAVE)</span>
+            <p class="CardTemp">Klik Untuk Lihat Info</p>
+            <p class="CardDescription">
+              Air terjun dua tingkat yang terjun deras ke kolam-kolam alami
+              sebening kaca. Cunca Wulang bersemayam jauh di dalam hutan Flores,
+              sekitar 2 jam dari Labuan Bajo. Perjalanannya sendiri adalah
+              petualangan: trekking menantang menembus hutan tropis yang lebat,
+              membuat setiap langkah terasa bermakna. Salah satu sudut alam
+              paling tenang dan belum terjamah di seluruh Flores Barat.
+            </p>
+          </div>
+        </div>
 
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <p>HOME / GALLERY</p>
-    <h1>TEMPAT WISATA</h1>
-    <em>destinasi impian Anda</em>
-  </section>
+        <div class="gallery-card">
+          <img src="./img/Gallery/GOAN_RANGKO_RANGKO_CAVE.webp" />
+          <div class="overlay">
+            <span class="Cardtitle">GOAN RANGKO (RANGKO CAVE)</span>
+            <p class="CardTemp">Klik Untuk Lihat Info</p>
+            <p class="CardDescription">
+              Panggung terbaik untuk menyaksikan matahari terbenam di Labuan
+              Bajo. Berdiri di tepi kota, Bukit Sylvia menyuguhkan panorama Laut
+              Flores yang terbentang luas, gugusan pulau-pulau kecil, dan
+              perahu-perahu kayu yang berayun tenang di lautan. Saat matahari
+              mulai turun, langit berubah menjadi kanvas warna jingga, emas, dan
+              ungu yang membakar. Tiket masuk gratis. Hanya 10–15 menit dari
+              pusat kota. Murni ajaib.
+            </p>
+          </div>
+        </div>
 
-  <!-- INTRO -->
-  <section class="intro">
-    <h2>Gallery <em>& Destinations</em></h2>
-    <p>Jelajahi keindahan alam dan budaya dari berbagai penjuru dunia. Temukan destinasi wisata impian Anda bersama kami, dari pantai eksotis hingga pegunungan yang memukau.</p>
-  </section>
+        <div class="gallery-card">
+          <img src="./img/Gallery/KOMODO_NATIONAL_PARK.webp" />
+          <div class="overlay">
+            <span class="Cardtitle">KOMODO NATIONAL PARK</span>
+            <p class="CardTemp">Klik Untuk Lihat Info</p>
+            <p class="CardDescription">
+              Bukit yang tenang hanya 10 menit dari pusat kota, Bukit Cinta
+              memanjakan pengunjung dengan pemandangan laut biru toska dan
+              gugusan pulau-pulau hijau yang tersebar indah. Disukai pasangan
+              dan fotografer, bukit ini memancarkan energi yang damai dan
+              romantis, membuat setiap kunjungan terasa begitu personal.
+              Trekking singkat ke puncak — dan pemandangannya berbicara sendiri.
+            </p>
+          </div>
+        </div>
 
-  <!-- FILTER -->
-  <div class="filter">
-    <button class="on">SEMUA</button>
-    <button>ALAM</button>
-    <button>BUDAYA</button>
-    <button>PANTAI</button>
-    <button>GUNUNG</button>
-  </div>
+        <div class="gallery-card">
+          <img src="./img/Gallery/NUCA_MOLAS_NUCA_MOLAS_ISLAND.webp" />
+          <div class="overlay">
+            <span class="Cardtitle">NUCA MOLAS (NUCA MOLAS ISLAND)</span>
+            <p class="CardTemp">Klik Untuk Lihat Info</p>
+            <p class="CardDescription">
+              Salah satu lanskap paling memukau di Flores — sawah terasering di
+              Desa Cancar yang terbagi dalam pola jaring laba-laba yang
+              sempurna, mengikuti tradisi pembagian tanah kuno Manggarai yang
+              disebut lodok. Dilihat dari ketinggian, petak-petak sawah
+              geometris itu beriak dalam nuansa hijau tua yang dalam — karya
+              seni hidup hasil tangan generasi para petani. Berjarak 1,5 jam
+              dari Labuan Bajo. Wajib dikunjungi oleh pecinta fotografi dan
+              budaya.
+            </p>
+          </div>
+        </div>
 
-  <!-- GALLERY -->
-  <section class="gallery">
-    <div class="gallery-grid">
-
-      <div class="gallery-card wide">
-        <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800" alt="Bali">
-        <div class="overlay">
-          <span class="tag">PANTAI</span>
-          <h4>Bali, Indonesia</h4>
-          <p>📍 Pulau Dewata yang memukau</p>
+        <div class="gallery-card">
+          <img src="./img/Gallery/SAWAH_LINGKO_SPIDER_WEB_RICE_FIELDS.webp" />
+          <div class="overlay">
+            <span class="Cardtitle">SAWAH LINGKO (SPIDER WEB RICE FIELDS)</span>
+            <p class="CardTemp">Klik Untuk Lihat Info</p>
+            <p class="CardDescription">
+              Permata tersembunyi Labuan Bajo yang sedang naik daun. Dikenal
+              warga setempat sebagai Pulau Mules, Nuca Molas masih liar,
+              terpencil, dan menyegarkan karena belum tersentuh pariwisata
+              massal. Danau air tawar yang tenang, garis pantai yang damai, dan
+              kehangatan komunitas lokal menjadikan pulau ini terasa seperti
+              rahasia yang hanya ditemukan oleh segelintir pelancong beruntung.
+              Datanglah sebelum dunia tahu.
+            </p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="gallery-card">
-        <img src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=400" alt="Raja Ampat">
-        <div class="overlay">
-          <span class="tag">ALAM</span>
-          <h4>Raja Ampat</h4>
-          <p>📍 Papua Barat</p>
-        </div>
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-bottom">
+        &copy; 2026 Explore Labuan Bajo — Beyond the Horizon, Lies Everything
       </div>
+    </footer>
+    <script src="./script.js"></script>
+    <script>
+      // Toggle Card Description
+      document.querySelectorAll(".gallery-card").forEach((card) => {
+        const image = card.querySelector("img");
+        const description = card.querySelector(".CardDescription");
+        const tempText = card.querySelector(".CardTemp");
 
-      <div class="gallery-card">
-        <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=400" alt="Bromo">
-        <div class="overlay">
-          <span class="tag">GUNUNG</span>
-          <h4>Gunung Bromo</h4>
-          <p>📍 Jawa Timur</p>
-        </div>
-      </div>
+        card.addEventListener("click", () => {
+          card.classList.toggle("active");
 
-      <div class="gallery-card">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400" alt="Komodo">
-        <div class="overlay">
-          <span class="tag">ALAM</span>
-          <h4>Taman Komodo</h4>
-          <p>📍 Nusa Tenggara Timur</p>
-        </div>
-      </div>
+          const isActive = card.classList.contains("active");
 
-      <div class="gallery-card wide">
-        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800" alt="Borobudur">
-        <div class="overlay">
-          <span class="tag">BUDAYA</span>
-          <h4>Candi Borobudur</h4>
-          <p>📍 Magelang, Jawa Tengah</p>
-        </div>
-      </div>
-
-      <div class="gallery-card wide">
-        <img src="https://images.unsplash.com/photo-1571406761773-c0d3f0ceaf76?w=800" alt="Labuan Bajo">
-        <div class="overlay">
-          <span class="tag">PANTAI</span>
-          <h4>Labuan Bajo</h4>
-          <p>📍 Flores, NTT</p>
-        </div>
-      </div>
-
-      <div class="gallery-card">
-        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400" alt="Lombok">
-        <div class="overlay">
-          <span class="tag">PANTAI</span>
-          <h4>Lombok</h4>
-          <p>📍 Nusa Tenggara Barat</p>
-        </div>
-      </div>
-
-      <div class="gallery-card">
-        <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c31a?w=400" alt="Dieng">
-        <div class="overlay">
-          <span class="tag">GUNUNG</span>
-          <h4>Dataran Tinggi Dieng</h4>
-          <p>📍 Wonosobo, Jawa Tengah</p>
-        </div>
-      </div>
-
-      <div class="gallery-card">
-        <img src="https://images.unsplash.com/photo-1452441271666-5d998aa2f6cc?w=400" alt="Toba">
-        <div class="overlay">
-          <span class="tag">ALAM</span>
-          <h4>Danau Toba</h4>
-          <p>📍 Sumatera Utara</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section class="stats">
-    <div class="stat-item">
-      <h3>120+</h3>
-      <p>Destinasi Wisata</p>
-    </div>
-    <div class="stat-item">
-      <h3>34</h3>
-      <p>Provinsi di Indonesia</p>
-    </div>
-    <div class="stat-item">
-      <h3>5.000+</h3>
-      <p>Wisatawan Puas</p>
-    </div>
-    <div class="stat-item">
-      <h3>10+</h3>
-      <p>Tahun Pengalaman</p>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section class="newsletter">
-    <h3>Subscribe To Our Newsletter</h3>
-    <div class="form-row">
-      <input type="email" placeholder="Enter your e-mail">
-      <button type="button">SUBSCRIBE</button>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div class="contact-info">
-        <h4>Contact</h4>
-        <p>📍 240 Tower Street, New York, USA</p>
-        <p>📞 (021) 675 0019</p>
-        <p>✉ contact@organie.com</p>
-        <p>🌐 www.organie.com</p>
-      </div>
-      <div>
-        <h4>Information</h4>
-        <ul>
-          <li><a href="#">New Products</a></li>
-          <li><a href="#">Top Sellers</a></li>
-          <li><a href="#">Our Blog</a></li>
-          <li><a href="#">About Our Shop</a></li>
-          <li><a href="#">Secure Shopping</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>My Account</h4>
-        <ul>
-          <li><a href="#">My Account</a></li>
-          <li><a href="#">Personal Information</a></li>
-          <li><a href="#">Addresses</a></li>
-          <li><a href="#">Discount</a></li>
-          <li><a href="#">Orders History</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Photos in Instagram</h4>
-        <div class="instagram-grid">
-          <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=120" alt="ig1">
-          <img src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=120" alt="ig2">
-          <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=120" alt="ig3">
-          <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=120" alt="ig4">
-          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=120" alt="ig5">
-          <img src="https://images.unsplash.com/photo-1452441271666-5d998aa2f6cc?w=120" alt="ig6">
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">&copy; 2024 Organie - All Rights Reserved</div>
-  </footer>
-
-</body>
+          image.style.filter = isActive ? "brightness(20%)" : "brightness(80%)";
+          tempText.textContent = isActive
+            ? "Klik Untuk Tutup Info"
+            : "Klik Untuk Lihat Info";
+        });
+      });
+    </script>
+  </body>
 </html>

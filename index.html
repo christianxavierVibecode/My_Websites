@@ -3,61 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BajoIslandTour - Beyond the Horizon, Lies Everything</title>
+    <title>
+      Main Page | BajoIslandTour - Beyond the Horizon, Lies Everything
+    </title>
     <link rel="icon" type="image/avif" href="./img/Logo_Website_UTS.avif" />
+    <link rel="stylesheet" href="./style.css" />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: Georgia, serif;
-        color: #333;
-      }
-
-      /* NAV */
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 14px 40px;
-        background: #fff;
-        border-bottom: 1px solid #eee;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        overflow: hidden;
-      }
-      nav .logo img {
-        width: 60px;
-      }
-      nav ul {
-        list-style: none;
-        display: flex;
-      }
-      nav ul li {
-        padding: 0 15px;
-        border-right: 1px solid #999;
-      }
-      nav ul li:last-child {
-        border-right: none;
-      }
-      nav ul li a {
-        text-decoration: none;
-        color: #444;
-        font-family: Arial, sans-serif;
-        font-size: 13px;
-      }
-      nav ul li a:hover {
-        color: #00008b;
-        font-weight: bold;
-      }
-
-      .active {
-        color: #00008b;
-      }
-
       /* HERO */
       .hero {
         position: relative;
@@ -100,7 +51,6 @@
         inset: 0;
         background: rgba(0, 0, 0, 0.6);
       }
-      /* text */
       .hero-content {
         position: relative;
         z-index: 2;
@@ -113,7 +63,7 @@
       }
       .intro h2 {
         font-size: 48px;
-        color: #00008b;
+        color: #55462a;
       }
       .intro h2 em {
         font-family: Georgia, serif;
@@ -131,9 +81,9 @@
       .intro a {
         font-size: 12px;
         letter-spacing: 2px;
-        color: #00008b;
+        color: #55462a;
         text-decoration: none;
-        border-bottom: 1px solid #00008b;
+        border-bottom: 1px solid #55462a;
       }
 
       /* CONTENTS */
@@ -197,21 +147,6 @@
         .contents {
           padding: 40px 20px;
         }
-      }
-
-      /* FOOTER */
-      footer {
-        background: #fff;
-        padding: 50px 40px 20px;
-        border-top: 1px solid #eee;
-      }
-      .footer-bottom {
-        text-align: center;
-        font-size: 11px;
-        color: #bbb;
-        padding-top: 16px;
-        border-top: 1px solid #eee;
-        font-family: Arial, sans-serif;
       }
     </style>
   </head>
@@ -291,15 +226,32 @@
       </div>
     </footer>
 
+    <script src="./script.js"></script>
     <script>
       // ARRAY GAMBAR
       const images = [
-        "./img/Img1.webp",
-        "./img/Img2.webp",
-        "./img/Img3.webp",
-        "./img/Img4.webp",
-        "./img/Img5.webp",
+        "./img/Gallery/BUKIT_CINTA_LOVE_HILL.webp",
+        "./img/Gallery/BUKIT_SYLVIA_SYLVIA_HILL.webp",
+        "./img/Gallery/CUNCA_RAMI_WATERFALL.webp",
+        "./img/Gallery/CUNCA_WULANG_WATERFALL.webp",
+        "./img/Gallery/GOA_BATU_CERMIN_MIRROR_STONE_CAVE.webp",
+        "./img/Gallery/GOAN_RANGKO_RANGKO_CAVE.webp",
+        "./img/Gallery/KOMODO_NATIONAL_PARK.webp",
+        "./img/Gallery/NUCA_MOLAS_NUCA_MOLAS_ISLAND.webp",
+        "./img/Gallery/SAWAH_LINGKO_SPIDER_WEB_RICE_FIELDS.webp",
       ];
+
+      function shuffleImages(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+
+        return array;
+      }
+
+      shuffleImages(images);
 
       // AMBIL HERO
       const hero = document.querySelector(".hero");

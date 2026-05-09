@@ -1,320 +1,133 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Organie - About Us</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Georgia, serif; color: #333; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Abous Me | BajoIslandTour - Beyond the Horizon, Lies Everything
+    </title>
+    <link rel="icon" type="image/webp" href="./img/Logo_Website_UTS.avif" />
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      /* ABOUT */
+      .about {
+        display: flex;
+        gap: 0;
+        padding: 60px 40px;
+        max-width: 980px;
+        margin: 0 auto;
+        align-items: center;
+      }
+      .about-img img {
+        height: 400px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 2px solid #55462a;
+      }
+      .about-text {
+        flex: 1;
+        padding-left: 50px;
+      }
+      .about-text h3 {
+        font-size: 28px;
+        color: #55462a;
+        margin-bottom: 16px;
+      }
+      .about-text p {
+        font-size: 14px;
+        color: #777;
+        line-height: 1.8;
+        font-family: Arial, sans-serif;
+        margin-bottom: 14px;
+      }
+      .about-text a {
+        font-size: 12px;
+        color: #55462a;
+        text-decoration: none;
+        border-bottom: 1px solid #55462a;
+        letter-spacing: 1px;
+      }
+      .social-link img {
+        width: 50px;
+        height: 50px;
+        color: white;
+        margin-right: 10px;
+        background-color: #55462a;
+        padding: 10px;
+        border-radius: 50%;
+        text-decoration: none;
+      }
+      .social-link img:hover {
+        background-color: #241e12;
+        transition: 0.3s;
+      }
+      .social-link a {
+        text-decoration: none;
+        border: none;
+      }
+      @media (max-width: 768px) {
+        nav {
+          padding: 14px 20px;
+        }
+        .about {
+          flex-direction: column;
+          padding: 20px;
+        }
+        .about-img img {
+          height: auto;
+          width: 100%;
+        }
+        .about-text {
+          padding-left: 0;
+          margin-top: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="logo"><img src="./img/Logo_Website_UTS.avif" /></div>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./gallery.html">Gallery</a></li>
+        <li><a href="./form.html">Contact</a></li>
+        <li><a class="active" href="./about.html">About</a></li>
+      </ul>
+    </nav>
 
-    /* NAV */
-    nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 40px; background: #fff; border-bottom: 1px solid #eee;
-      position: sticky; top: 0; z-index: 100;
-    }
-    nav .logo { font-size: 22px; font-weight: bold; letter-spacing: 2px; color: #5a8a3c; }
-    nav ul { list-style: none; display: flex; gap: 24px; }
-    nav ul li a { text-decoration: none; color: #444; font-family: Arial, sans-serif; font-size: 13px; }
-    nav ul li a:hover { color: #5a8a3c; }
-    nav ul li a.active { color: #5a8a3c; font-weight: bold; border-bottom: 2px solid #5a8a3c; padding-bottom: 2px; }
-
-    /* PAGE HERO */
-    .page-hero {
-      background: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200') center/cover no-repeat;
-      height: 300px; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center; color: #fff;
-      position: relative;
-    }
-    .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.42); }
-    .page-hero p { font-size: 13px; letter-spacing: 2px; opacity: 0.9; position: relative; margin-bottom: 8px; font-family: Arial, sans-serif; }
-    .page-hero h1 { font-size: 40px; font-weight: bold; letter-spacing: 3px; position: relative; }
-    .page-hero em { font-style: italic; font-size: 18px; position: relative; }
-
-    /* INTRO */
-    .intro { text-align: center; padding: 55px 40px 30px; }
-    .intro h2 { font-size: 42px; color: #5a8a3c; }
-    .intro h2 em { font-family: Georgia, serif; font-style: italic; color: #333; }
-    .intro p { max-width: 580px; margin: 14px auto 0; color: #777; font-size: 14px; line-height: 1.8; font-family: Arial, sans-serif; }
-
-    /* MISSION */
-    .mission { display: flex; gap: 0; padding: 60px 40px; max-width: 980px; margin: 0 auto; align-items: center; }
-    .mission-img { flex: 1; }
-    .mission-img img { width: 100%; height: 340px; object-fit: cover; border-radius: 4px; }
-    .mission-text { flex: 1; padding-left: 50px; }
-    .mission-text h3 { font-size: 28px; color: #5a8a3c; margin-bottom: 16px; }
-    .mission-text p { font-size: 14px; color: #777; line-height: 1.8; font-family: Arial, sans-serif; margin-bottom: 14px; }
-    .mission-text a { font-size: 12px; color: #5a8a3c; text-decoration: none; border-bottom: 1px solid #5a8a3c; letter-spacing: 1px; }
-
-    /* NILAI */
-    .values { background: #f9f9f7; padding: 60px 40px; text-align: center; }
-    .values h2 { font-size: 24px; letter-spacing: 3px; text-transform: uppercase; font-family: Arial, sans-serif; margin-bottom: 8px; }
-    .values .sub { font-style: italic; color: #aaa; font-size: 13px; margin-bottom: 36px; }
-    .values-grid { display: flex; justify-content: center; gap: 30px; max-width: 860px; margin: 0 auto; }
-    .value-card { text-align: center; flex: 1; }
-    .value-card .icon { font-size: 36px; margin-bottom: 14px; }
-    .value-card h4 { font-size: 15px; font-family: Arial, sans-serif; font-weight: bold; margin-bottom: 10px; }
-    .value-card p { font-size: 13px; color: #888; line-height: 1.6; font-family: Arial, sans-serif; }
-
-    /* TEAM */
-    .team { padding: 60px 40px; text-align: center; }
-    .team h2 { font-size: 24px; letter-spacing: 3px; text-transform: uppercase; font-family: Arial, sans-serif; margin-bottom: 8px; }
-    .team .sub { font-style: italic; color: #aaa; font-size: 13px; margin-bottom: 36px; }
-    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; max-width: 960px; margin: 0 auto; }
-    .team-card { text-align: center; }
-    .team-card .photo {
-      width: 130px; height: 130px; border-radius: 50%; overflow: hidden;
-      margin: 0 auto 14px; border: 3px solid #e8f0e2;
-    }
-    .team-card .photo img { width: 100%; height: 100%; object-fit: cover; }
-    .team-card h4 { font-size: 15px; font-family: Arial, sans-serif; font-weight: bold; margin-bottom: 4px; }
-    .team-card .role { font-size: 12px; color: #5a8a3c; font-family: Arial, sans-serif; margin-bottom: 10px; letter-spacing: 1px; }
-    .team-card p { font-size: 12px; color: #888; line-height: 1.6; font-family: Arial, sans-serif; }
-    .team-card .socials { margin-top: 10px; font-size: 16px; display: flex; gap: 8px; justify-content: center; }
-    .team-card .socials a { color: #aaa; text-decoration: none; }
-    .team-card .socials a:hover { color: #5a8a3c; }
-
-    /* TIMELINE */
-    .timeline { background: #f9f9f7; padding: 60px 40px; text-align: center; }
-    .timeline h2 { font-size: 24px; letter-spacing: 3px; text-transform: uppercase; font-family: Arial, sans-serif; margin-bottom: 8px; }
-    .timeline .sub { font-style: italic; color: #aaa; font-size: 13px; margin-bottom: 40px; }
-    .tl-list { max-width: 700px; margin: 0 auto; text-align: left; border-left: 2px solid #d4e8c2; padding-left: 30px; }
-    .tl-item { position: relative; margin-bottom: 30px; }
-    .tl-item::before {
-      content: ''; position: absolute; left: -38px; top: 4px;
-      width: 12px; height: 12px; border-radius: 50%;
-      background: #5a8a3c; border: 2px solid #fff; box-shadow: 0 0 0 2px #5a8a3c;
-    }
-    .tl-item .year { font-size: 12px; color: #5a8a3c; font-family: Arial, sans-serif; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px; }
-    .tl-item h4 { font-size: 15px; font-family: Arial, sans-serif; margin-bottom: 4px; }
-    .tl-item p { font-size: 13px; color: #888; font-family: Arial, sans-serif; line-height: 1.6; }
-
-    /* NEWSLETTER */
-    .newsletter { background: #fff; padding: 50px 40px; display: flex; align-items: center; justify-content: center; gap: 40px; border-top: 1px solid #eee; }
-    .newsletter h3 { font-size: 22px; font-family: Georgia, serif; max-width: 200px; }
-    .newsletter .form-row { display: flex; }
-    .newsletter input { padding: 12px 18px; border: 1px solid #ddd; font-size: 13px; outline: none; width: 260px; border-right: none; font-family: Arial, sans-serif; }
-    .newsletter button { padding: 12px 22px; background: #5a8a3c; color: #fff; border: none; font-size: 13px; cursor: pointer; letter-spacing: 1px; font-family: Arial, sans-serif; }
-
-    /* FOOTER */
-    footer { background: #fff; padding: 50px 40px 20px; border-top: 1px solid #eee; }
-    .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 30px; }
-    footer h4 { font-size: 13px; font-weight: bold; margin-bottom: 14px; letter-spacing: 1px; font-family: Arial, sans-serif; }
-    footer ul { list-style: none; }
-    footer ul li { margin-bottom: 7px; }
-    footer ul li a { text-decoration: none; font-size: 12px; color: #888; font-family: Arial, sans-serif; }
-    footer .contact-info p { font-size: 12px; color: #888; margin-bottom: 6px; font-family: Arial, sans-serif; }
-    footer .instagram-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-    footer .instagram-grid img { width: 100%; height: 55px; object-fit: cover; border-radius: 2px; }
-    .footer-bottom { text-align: center; font-size: 11px; color: #bbb; padding-top: 16px; border-top: 1px solid #eee; font-family: Arial, sans-serif; }
-  </style>
-</head>
-<body>
-
-  <!-- NAV -->
-  <nav>
-    <div class="logo">ORGANIE</div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="about.html" class="active">About Us</a></li>
-      <li><a href="form.html">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <p>HOME / ABOUT US</p>
-    <h1>ABOUT US</h1>
-    <em>kenali tim kami</em>
-  </section>
-
-  <!-- INTRO -->
-  <section class="intro">
-    <h2>Tim <em>& Visi Kami</em></h2>
-    <p>Kami adalah tim pengembang yang berdedikasi untuk menciptakan pengalaman digital terbaik. Dengan semangat inovasi dan kecintaan terhadap alam, kami hadir untuk membawa keindahan ke layar Anda.</p>
-  </section>
-
-  <!-- MISSION -->
-  <section class="mission">
-    <div class="mission-img">
-      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600" alt="Tim Kami">
-    </div>
-    <div class="mission-text">
-      <h3>Misi <em>Kami</em></h3>
-      <p>Organie lahir dari mimpi sederhana: menghubungkan manusia dengan keindahan alam. Kami percaya bahwa teknologi dan alam dapat berjalan beriringan untuk menciptakan kehidupan yang lebih baik.</p>
-      <p>Sejak 2014, kami telah melayani ribuan pelanggan di seluruh Indonesia dengan produk dan layanan berkualitas tinggi yang terinspirasi dari kekayaan alam nusantara.</p>
-      <a href="#">PELAJARI LEBIH LANJUT</a>
-    </div>
-  </section>
-
-  <!-- VALUES -->
-  <section class="values">
-    <h2>Nilai Kami</h2>
-    <p class="sub">Yang mendorong semangat kami setiap hari</p>
-    <div class="values-grid">
-      <div class="value-card">
-        <div class="icon">🌱</div>
-        <h4>Berkelanjutan</h4>
-        <p>Kami berkomitmen pada praktik bisnis yang ramah lingkungan dan berkelanjutan untuk generasi mendatang.</p>
+    <section class="about">
+      <div class="about-img">
+        <img src="./img/AboutUs/Xavier.png" />
       </div>
-      <div class="value-card">
-        <div class="icon">💡</div>
-        <h4>Inovatif</h4>
-        <p>Selalu mencari cara baru dan kreatif untuk memberikan solusi terbaik bagi pelanggan kami.</p>
-      </div>
-      <div class="value-card">
-        <div class="icon">🤝</div>
-        <h4>Kolaboratif</h4>
-        <p>Kami percaya bahwa hasil terbaik lahir dari kerja sama yang solid dan kepercayaan satu sama lain.</p>
-      </div>
-      <div class="value-card">
-        <div class="icon">❤️</div>
-        <h4>Penuh Kasih</h4>
-        <p>Setiap produk dibuat dengan penuh cinta dan perhatian untuk memastikan kepuasan pelanggan.</p>
-      </div>
-    </div>
-  </section>
+      <div class="about-text">
+        <h3>Tentang <em>Saya</em></h3>
+        <p>
+          Halo, perkenalkan nama saya
+          <strong>Xavier Christian Rihi</strong> dengan NIM
+          <strong>255410048</strong>. Saya merupakan mahasiswa Program Studi
+          Informatika di Universitas Teknologi Digital Indonesia.
+        </p>
 
-  <!-- TEAM -->
-  <section class="team">
-    <h2>Meet The Team</h2>
-    <p class="sub">Orang-orang hebat di balik Organie</p>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="photo">
-          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200" alt="Andi">
-        </div>
-        <h4>Andi Prasetyo</h4>
-        <div class="role">FOUNDER & CEO</div>
-        <p>Visioner di balik Organie. Berpengalaman 12 tahun di industri teknologi dan kecintaan pada alam.</p>
-        <div class="socials">
-          <a href="#">🔗</a><a href="#">✉</a><a href="#">📷</a>
+        <p>
+          Saya memiliki minat dalam bidang teknologi, pengembangan web, dan
+          desain antarmuka modern. Website ini dibuat sebagai bagian dari tugas
+          Ujian Tengah Semester (UTS) Mata Kuliah Pemrograman Front-End.
+        </p>
+        <div class="social-link">
+          <a href=""><img src="./img/AboutUs/github.png" /></a>
+          <a href=""><img src="./img/AboutUs/instagram.png" /></a>
+          <a href=""><img src="./img/AboutUs/profile.png" /></a>
         </div>
       </div>
-      <div class="team-card">
-        <div class="photo">
-          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200" alt="Sari">
-        </div>
-        <h4>Sari Dewi</h4>
-        <div class="role">HEAD OF DESIGN</div>
-        <p>Desainer kreatif dengan mata tajam untuk estetika. Setiap piksel diperhatikan dengan seksama.</p>
-        <div class="socials">
-          <a href="#">🔗</a><a href="#">✉</a><a href="#">📷</a>
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="photo">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200" alt="Budi">
-        </div>
-        <h4>Budi Santoso</h4>
-        <div class="role">LEAD DEVELOPER</div>
-        <p>Arsitek sistem di balik platform Organie. Ahli dalam membangun solusi teknologi yang scalable.</p>
-        <div class="socials">
-          <a href="#">🔗</a><a href="#">✉</a><a href="#">📷</a>
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="photo">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200" alt="Rina">
-        </div>
-        <h4>Rina Marlina</h4>
-        <div class="role">MARKETING MANAGER</div>
-        <p>Strategi pemasaran dan pertumbuhan brand Organie. Ahli dalam digital marketing dan social media.</p>
-        <div class="socials">
-          <a href="#">🔗</a><a href="#">✉</a><a href="#">📷</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- TIMELINE -->
-  <section class="timeline">
-    <h2>Perjalanan Kami</h2>
-    <p class="sub">Tonggak penting dalam sejarah Organie</p>
-    <div class="tl-list">
-      <div class="tl-item">
-        <div class="year">2014</div>
-        <h4>Organie Berdiri</h4>
-        <p>Didirikan oleh Andi Prasetyo di Jakarta dengan modal awal dan semangat besar untuk mengubah industri tanaman hias.</p>
+    <footer>
+      <div class="footer-bottom">
+        &copy; 2026 Explore Labuan Bajo — Beyond the Horizon, Lies Everything
       </div>
-      <div class="tl-item">
-        <div class="year">2016</div>
-        <h4>Ekspansi Produk</h4>
-        <p>Meluncurkan lini produk baru termasuk pot premium, pupuk organik, dan layanan konsultasi taman.</p>
-      </div>
-      <div class="tl-item">
-        <div class="year">2019</div>
-        <h4>Toko Online Diluncurkan</h4>
-        <p>Platform e-commerce resmi diluncurkan, memungkinkan pengiriman ke seluruh Indonesia.</p>
-      </div>
-      <div class="tl-item">
-        <div class="year">2022</div>
-        <h4>Penghargaan Nasional</h4>
-        <p>Meraih penghargaan "Best Green Business Indonesia" dari Kementerian Lingkungan Hidup.</p>
-      </div>
-      <div class="tl-item">
-        <div class="year">2024</div>
-        <h4>10 Tahun Organie</h4>
-        <p>Merayakan dekade pertama dengan lebih dari 50.000 pelanggan aktif dan 200+ produk dalam katalog.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section class="newsletter">
-    <h3>Subscribe To Our Newsletter</h3>
-    <div class="form-row">
-      <input type="email" placeholder="Enter your e-mail">
-      <button type="button">SUBSCRIBE</button>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div class="contact-info">
-        <h4>Contact</h4>
-        <p>📍 240 Tower Street, New York, USA</p>
-        <p>📞 (021) 675 0019</p>
-        <p>✉ contact@organie.com</p>
-        <p>🌐 www.organie.com</p>
-      </div>
-      <div>
-        <h4>Information</h4>
-        <ul>
-          <li><a href="#">New Products</a></li>
-          <li><a href="#">Top Sellers</a></li>
-          <li><a href="#">Our Blog</a></li>
-          <li><a href="#">About Our Shop</a></li>
-          <li><a href="#">Secure Shopping</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>My Account</h4>
-        <ul>
-          <li><a href="#">My Account</a></li>
-          <li><a href="#">Personal Information</a></li>
-          <li><a href="#">Addresses</a></li>
-          <li><a href="#">Discount</a></li>
-          <li><a href="#">Orders History</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Photos in Instagram</h4>
-        <div class="instagram-grid">
-          <img src="https://images.unsplash.com/photo-1463936575829-25148e1db1b8?w=120" alt="ig1">
-          <img src="https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?w=120" alt="ig2">
-          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=120" alt="ig3">
-          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=120" alt="ig4">
-          <img src="https://images.unsplash.com/photo-1459156212016-c812468e2115?w=120" alt="ig5">
-          <img src="https://images.unsplash.com/photo-1545241047-6083a3684587?w=120" alt="ig6">
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">&copy; 2024 Organie - All Rights Reserved</div>
-  </footer>
-
-</body>
+    </footer>
+    <script src="./script.js"></script>
+  </body>
 </html>
