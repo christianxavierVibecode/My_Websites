@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BajoIslandTour - Beyond the Horizon, Lies Everything</title>
+    <link rel="icon" type="image/avif" href="./img/Logo_Website_UTS.avif" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Georgia, serif;
+        color: #333;
+      }
+
+      /* NAV */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 40px;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        overflow: hidden;
+      }
+      nav .logo img {
+        width: 60px;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+      }
+      nav ul li {
+        padding: 0 15px;
+        border-right: 1px solid #999;
+      }
+      nav ul li:last-child {
+        border-right: none;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: #444;
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+      }
+      nav ul li a:hover {
+        color: #00008b;
+        font-weight: bold;
+      }
+
+      .active {
+        color: #00008b;
+      }
+
+      /* HERO */
+      .hero {
+        position: relative;
+        height: 500px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        transition: background-image 1s ease-in-out;
+      }
+      .hero p {
+        font-size: 13px;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        opacity: 0.9;
+        color: rgba(255, 255, 255, 0.85);
+        letter-spacing: 3px;
+      }
+      .hero h1 {
+        font-size: 42px;
+        font-weight: bold;
+        letter-spacing: 3px;
+        margin-bottom: 6px;
+        color: #fff;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+      }
+      .hero em {
+        font-style: italic;
+        font-size: 20px;
+        font-family: Georgia, serif;
+        color: #f5deb3;
+      }
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+      }
+      /* text */
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* SECTION: Plants & Flowers */
+      .intro {
+        text-align: center;
+        padding: 60px 40px 20px;
+      }
+      .intro h2 {
+        font-size: 48px;
+        color: #00008b;
+      }
+      .intro h2 em {
+        font-family: Georgia, serif;
+        font-style: italic;
+        color: #333;
+      }
+      .intro p {
+        max-width: 520px;
+        margin: 14px auto 20px;
+        color: #777;
+        font-size: 14px;
+        line-height: 1.7;
+        font-family: Arial, sans-serif;
+      }
+      .intro a {
+        font-size: 12px;
+        letter-spacing: 2px;
+        color: #00008b;
+        text-decoration: none;
+        border-bottom: 1px solid #00008b;
+      }
+
+      /* CONTENTS */
+      .contents {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+        padding: 60px 80px;
+        background: #f9f9f7;
+      }
+
+      .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+      }
+
+      .rightImg {
+        flex-direction: row-reverse;
+      }
+
+      .content img {
+        width: 400px;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+
+      .content div {
+        flex: 1;
+      }
+
+      .content h3 {
+        font-size: 28px;
+        margin-bottom: 18px;
+        font-family: Arial, sans-serif;
+      }
+
+      .content p {
+        font-size: 15px;
+        color: #666;
+        line-height: 1.8;
+        font-family: Arial, sans-serif;
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 14px 20px;
+        }
+
+        .content,
+        .rightImg {
+          flex-direction: column;
+        }
+
+        .content img {
+          width: 100%;
+        }
+
+        .contents {
+          padding: 40px 20px;
+        }
+      }
+
+      /* FOOTER */
+      footer {
+        background: #fff;
+        padding: 50px 40px 20px;
+        border-top: 1px solid #eee;
+      }
+      .footer-bottom {
+        text-align: center;
+        font-size: 11px;
+        color: #bbb;
+        padding-top: 16px;
+        border-top: 1px solid #eee;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="logo"><img src="./img/Logo_Website_UTS.avif" /></div>
+      <ul>
+        <li><a class="active" href="./index.html">Home</a></li>
+        <li><a href="./gallery.html">Gallery</a></li>
+        <li><a href="./form.html">Contact</a></li>
+        <li><a href="./about.html">About</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <p>WELCOME TO LABUAN BAJO</p>
+        <h1>Beyond the Horizon, Lies Everything</h1>
+        <em>Nature in its purest form</em>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="intro">
+      <h2>Explore <em>Labuan Bajo</em></h2>
+      <p>
+        Temukan surga tropis di ujung Indonesia. Nikmati keindahan pulau-pulau
+        eksotis, pantai berpasir merah muda, laut yang jernih, dan petualangan
+        alam liar yang tidak akan terlupakan.
+      </p>
+      <a href="#">START YOUR JOURNEY</a>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="contents">
+      <div class="content leftImg">
+        <img src="./img/Img1.webp" />
+        <div class="text">
+          <h3>APA ITU LABUAN BAJO</h3>
+          <p>
+            Labuan Bajo adalah sebuah kota pesisir kecil yang terletak di ujung
+            barat Pulau Flores, Nusa Tenggara Timur, Indonesia — sebuah tempat
+            di mana alam liar yang purba bertemu dengan pemandangan laut yang
+            menakjubkan. Lebih dari sekadar gerbang menuju Taman Nasional
+            Komodo, Labuan Bajo adalah dunia tersendiri: pantai-pantai yang
+            masih perawan, bukit-bukit hijau berlapis kabut, perairan sejernih
+            kristal, makhluk prasejarah yang masih hidup, dan budaya yang sekaya
+            tanahnya. Labuan Bajo adalah salah satu dari lima Destinasi Super
+            Prioritas Indonesia — permata mahkota nusantara yang telah mencuri
+            hati jutaan wisatawan dari seluruh penjuru dunia.
+          </p>
+        </div>
+      </div>
+      <div class="content rightImg">
+        <img src="./img/Img2.webp" />
+        <div class="text">
+          <h3>DI MANA LABUAN BAJO</h3>
+          <p>
+            Labuan Bajo terletak di pesisir barat Pulau Flores, Kabupaten
+            Manggarai Barat, Provinsi Nusa Tenggara Timur, Indonesia. Kota ini
+            berada di ujung Kepulauan Sunda Kecil, menghadap Laut Flores di
+            sebelah utara dan Selat Sape di sebelah barat. Bandara terdekat
+            adalah Bandara Komodo (LBJ), dengan penerbangan langsung tersedia
+            dari Bali, Jakarta, dan beberapa kota besar di Indonesia.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-bottom">
+        &copy; 2026 Explore Labuan Bajo — Beyond the Horizon, Lies Everything
+      </div>
+    </footer>
+
+    <script>
+      // ARRAY GAMBAR
+      const images = [
+        "./img/Img1.webp",
+        "./img/Img2.webp",
+        "./img/Img3.webp",
+        "./img/Img4.webp",
+        "./img/Img5.webp",
+      ];
+
+      // AMBIL HERO
+      const hero = document.querySelector(".hero");
+
+      // INDEX AWAL
+      let current = 0;
+
+      // SET GAMBAR PERTAMA
+      hero.style.backgroundImage = `url(${images[current]})`;
+
+      // FUNGSI GANTI GAMBAR
+      function changeBackground() {
+        current = (current + 1) % images.length;
+
+        hero.style.backgroundImage = `url(${images[current]})`;
+      }
+
+      // AUTO SLIDE
+      setInterval(changeBackground, 4000);
+    </script>
+  </body>
+</html>
