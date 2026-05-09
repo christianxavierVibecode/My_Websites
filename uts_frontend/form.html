@@ -177,139 +177,148 @@
     </style>
   </head>
   <body>
-    <!-- NAV -->
-    <nav>
-      <div class="logo"><img src="./img/Logo_Website_UTS.avif" /></div>
-      <ul>
-        <li><a href="./index.html">Home</a></li>
-        <li><a href="./gallery.html">Gallery</a></li>
-        <li><a class="active" href="./form.html">Contact</a></li>
-        <li><a href="./about.html">About</a></li>
-      </ul>
-    </nav>
+    <div class="wrapper">
+      <main>
+        <!-- NAV -->
+        <nav>
+          <div class="logo"><img src="./img/Logo_Website_UTS.avif" /></div>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./gallery.html">Gallery</a></li>
+            <li><a class="active" href="./form.html">Contact</a></li>
+            <li><a href="./about.html">About</a></li>
+          </ul>
+        </nav>
 
-    <!-- INTRO -->
-    <section class="intro">
-      <h2>Hubungi <em>Kami</em></h2>
-      <p>
-        Punya pertanyaan seputar destinasi wisata, perjalanan, atau pengalaman
-        menjelajahi Labuan Bajo? Silakan isi formulir di bawah untuk mengirim
-        pesan, saran, maupun informasi lainnya.
-      </p>
-    </section>
+        <!-- INTRO -->
+        <section class="intro">
+          <h2>Hubungi <em>Kami</em></h2>
+          <p>
+            Punya pertanyaan seputar destinasi wisata, perjalanan, atau
+            pengalaman menjelajahi Labuan Bajo? Silakan isi formulir di bawah
+            untuk mengirim pesan, saran, maupun informasi lainnya.
+          </p>
+        </section>
 
-    <!-- FORM SECTION -->
-    <div class="form-section">
-      <div class="mainForm">
-        <h3>Kirim <em>Pesan</em></h3>
-        <p class="sub">Lengkapi form berikut dan kami segera merespons</p>
+        <!-- FORM SECTION -->
+        <div class="form-section">
+          <div class="mainForm">
+            <h3>Kirim <em>Pesan</em></h3>
+            <p class="sub">Lengkapi form berikut dan kami segera merespons</p>
 
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="nama">Nama Depan</label>
-            <input type="text" id="nama" placeholder="Masukkan nama depan" />
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="nama">Nama Depan</label>
+                <input
+                  type="text"
+                  id="nama"
+                  placeholder="Masukkan nama depan"
+                />
+              </div>
+              <div class="form-group">
+                <label for="namaakhir">Nama Belakang</label>
+                <input
+                  type="text"
+                  id="namaakhir"
+                  placeholder="Masukkan nama belakang"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Alamat Email</label>
+              <input type="email" id="email" placeholder="contoh@email.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="telp">Nomor Telepon</label>
+              <input type="tel" id="telp" placeholder="+62 812 xxxx xxxx" />
+            </div>
+
+            <div class="form-group">
+              <label for="topik">Topik Pertanyaan</label>
+              <select id="topik">
+                <option value="">-- Pilih Topik --</option>
+                <option value="produk">Informasi Produk</option>
+                <option value="order">Status Pesanan</option>
+                <option value="retur">Pengembalian Barang</option>
+                <option value="kerjasama">Kerjasama / Partnership</option>
+                <option value="lainnya">Lainnya</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Cara Dihubungi</label>
+              <div class="radio-group">
+                <label
+                  ><input type="radio" name="cara" value="email" checked />
+                  Email</label
+                >
+                <label
+                  ><input type="radio" name="cara" value="telepon" />
+                  Telepon</label
+                >
+                <label
+                  ><input type="radio" name="cara" value="whatsapp" />
+                  WhatsApp</label
+                >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="urgensi">Tingkat Urgensi</label>
+              <input type="range" id="urgensi" min="1" max="5" value="2" />
+              <div class="range-label">
+                <span>Santai</span><span>Normal</span><span>Mendesak</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="pesan">Pesan</label>
+              <textarea
+                id="pesan"
+                placeholder="Tuliskan pesan atau pertanyaan Anda di sini..."
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Aktivitas Wisata yang Diminati</label>
+
+              <div class="check-group">
+                <label>
+                  <input type="checkbox" value="island-hopping" />
+                  Island Hopping
+                </label>
+
+                <label>
+                  <input type="checkbox" value="diving" />
+                  Diving & Snorkeling
+                </label>
+
+                <label>
+                  <input type="checkbox" value="komodo-tour" />
+                  Komodo Island Tour
+                </label>
+
+                <label>
+                  <input type="checkbox" value="sunset-trip" />
+                  Sunset & Sailing Trip
+                </label>
+              </div>
+            </div>
+
+            <button class="btn-submit" type="button">KIRIM PESAN</button>
           </div>
-          <div class="form-group">
-            <label for="namaakhir">Nama Belakang</label>
-            <input
-              type="text"
-              id="namaakhir"
-              placeholder="Masukkan nama belakang"
-            />
-          </div>
         </div>
+      </main>
 
-        <div class="form-group">
-          <label for="email">Alamat Email</label>
-          <input type="email" id="email" placeholder="contoh@email.com" />
+      <!-- FOOTER -->
+      <footer>
+        <div class="footer-bottom">
+          &copy; 2026 Explore Labuan Bajo — Beyond the Horizon, Lies Everything
         </div>
-
-        <div class="form-group">
-          <label for="telp">Nomor Telepon</label>
-          <input type="tel" id="telp" placeholder="+62 812 xxxx xxxx" />
-        </div>
-
-        <div class="form-group">
-          <label for="topik">Topik Pertanyaan</label>
-          <select id="topik">
-            <option value="">-- Pilih Topik --</option>
-            <option value="produk">Informasi Produk</option>
-            <option value="order">Status Pesanan</option>
-            <option value="retur">Pengembalian Barang</option>
-            <option value="kerjasama">Kerjasama / Partnership</option>
-            <option value="lainnya">Lainnya</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>Cara Dihubungi</label>
-          <div class="radio-group">
-            <label
-              ><input type="radio" name="cara" value="email" checked />
-              Email</label
-            >
-            <label
-              ><input type="radio" name="cara" value="telepon" /> Telepon</label
-            >
-            <label
-              ><input type="radio" name="cara" value="whatsapp" />
-              WhatsApp</label
-            >
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="urgensi">Tingkat Urgensi</label>
-          <input type="range" id="urgensi" min="1" max="5" value="2" />
-          <div class="range-label">
-            <span>Santai</span><span>Normal</span><span>Mendesak</span>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="pesan">Pesan</label>
-          <textarea
-            id="pesan"
-            placeholder="Tuliskan pesan atau pertanyaan Anda di sini..."
-          ></textarea>
-        </div>
-
-        <div class="form-group">
-          <label>Aktivitas Wisata yang Diminati</label>
-
-          <div class="check-group">
-            <label>
-              <input type="checkbox" value="island-hopping" />
-              Island Hopping
-            </label>
-
-            <label>
-              <input type="checkbox" value="diving" />
-              Diving & Snorkeling
-            </label>
-
-            <label>
-              <input type="checkbox" value="komodo-tour" />
-              Komodo Island Tour
-            </label>
-
-            <label>
-              <input type="checkbox" value="sunset-trip" />
-              Sunset & Sailing Trip
-            </label>
-          </div>
-        </div>
-
-        <button class="btn-submit" type="button">KIRIM PESAN</button>
-      </div>
+      </footer>
     </div>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-bottom">
-        &copy; 2026 Explore Labuan Bajo — Beyond the Horizon, Lies Everything
-      </div>
-    </footer>
     <script src="./script.js"></script>
   </body>
 </html>
