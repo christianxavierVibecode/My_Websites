@@ -90,3 +90,9 @@ footer {
   border-top: 1px solid #eee;
   font-family: Arial, sans-serif;
 }
+
+@media (max-width: 768px) {
+nav .logo img {
+  display: none;
+}
+}
