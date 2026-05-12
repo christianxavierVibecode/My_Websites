@@ -92,7 +92,11 @@ footer {
 }
 
 @media (max-width: 768px) {
-nav .logo img {
-  display: none;
-}
+  nav .logo img {
+    display: none;
+  }
+
+  nav {
+    justify-content: center;
+  }
 }
